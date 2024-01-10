@@ -1,3 +1,11 @@
+import File.OpenFileCommand;
+import File.SaveFileCommand;
+import Light.Command;
+import Light.TurnOnLightCommand;
+import Light.TurnOffLightCommand;
+import Light.Light;
+import File.File;
+
 public class Test {
     public static void main(String[] args) {
 
@@ -6,9 +14,22 @@ public class Test {
         final Command switchUp = new TurnOnLightCommand(l);
         final Command switchDown = new TurnOffLightCommand(l);
 
-        final Switch s = new Switch(switchUp, switchDown);
+        final CommandExecutor lightExecutor = new CommandExecutor();
 
-        s.flipUp();
-        s.flipDown();
+        System.out.println("\n=====Выполнение команд для света:");
+        lightExecutor.executeCommand(switchUp);
+        lightExecutor.executeCommand(switchDown);
+
+
+        final File file = new File("Image.png");
+
+        final Command openFile = new OpenFileCommand(file);
+        final Command saveFile = new SaveFileCommand(file);
+
+        final CommandExecutor fileExecutor = new CommandExecutor();
+
+        System.out.println("\n=====Выполнение команд для файла:");
+        fileExecutor.executeCommand(openFile);
+        fileExecutor.executeCommand(saveFile);
     }
 }

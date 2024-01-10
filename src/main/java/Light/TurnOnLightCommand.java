@@ -1,4 +1,4 @@
-
+package Light;
 
 
 public class TurnOnLightCommand implements Command{
@@ -9,6 +9,7 @@ public class TurnOnLightCommand implements Command{
         this.theLight = light;
     }
 
+    @Override
     public void execute() {
         theLight.turnOn();
     }

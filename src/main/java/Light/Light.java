@@ -1,3 +1,5 @@
+package Light;
+
 public class Light
 {
     public Light(){
